@@ -1,0 +1,55 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.father-map{
+  display:flex;
+  text-decoration: none;
+  list-style: none;
+  gap: 1rem;
+  box-shadow: 0.1px 0.1px 0.1px 0.1px gray;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.father-map:hover{
+  background-color: rgba(128, 128, 128, 0.104);
+color: rgb(74, 74, 74);
+}
+.btn{
+  margin: 1px;
+  margin-left: auto;
+}
+.btn-form{
+  width: 100%;
+}
+/* form */
+.formcar{
+box-shadow: 2px 2px 3px 3px rgb(45, 95, 234);
+width: 350px;
+height: 350px;
+margin: 0 auto;
+justify-content: center;
+text-align: center;
+display: flex;
+flex-wrap: wrap;
+}
+
+.container-input{
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  padding: 0.7rem;
+  gap: 1rem;
+}
+input{
+  width: 250px;
+  display: flex;
+  text-align: center;
+ 
+
+}
