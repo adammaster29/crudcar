@@ -1,20 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 
-const CarList = ({ newcar, agregarcarros, deletecar, updatecar }) => {
+const CarList = ({ editecar,newcar, agregarcarros, deletecar, updatecar }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,reset } = useForm();
 
   const submit = (data, e) => {
     e.preventDefault();
     agregarcarros(data);
+    const clear ={brand:"",model:"",color:"",year:"",price:""}
+    reset(clear)
     console.log(data);
     
   };
+  useEffect(()=>{
+    reset(editecar);
+
+  },[editecar])
 
   return (
     <div>

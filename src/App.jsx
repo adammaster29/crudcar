@@ -25,7 +25,7 @@ const nuevoCarro=[
 ]
 
 const[newcar,setNewcar] = useState();
-
+const [editecar,setEditecar] = useState(null)
 useEffect(()=>{
   setNewcar(nuevoCarro);
 },[])
@@ -48,13 +48,14 @@ setNewcar(deletefilter);
 //actualizar carros
 
 const updatecar = (carros)=>{
-  setNewcar(carros)
+  setEditecar(carros);
+
 };
-console.log(newcar);
+console.log(editecar);
 
   return (
     <div className="App">
-    <CarList updatecar={updatecar} deletecar={deletecar} agregarcarros={agregarcarros} newcar={newcar} />
+    <CarList editecar={editecar} updatecar={updatecar} deletecar={deletecar} agregarcarros={agregarcarros} newcar={newcar} />
     </div>
   )
 }
