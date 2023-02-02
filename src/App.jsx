@@ -45,17 +45,27 @@ carros => carros.id !== id
 setNewcar(deletefilter);
 };
 
-//actualizar carros
+//selecionar carros
 
-const updatecar = (carros)=>{
+const selectedcar = (carros)=>{
   setEditecar(carros);
 
 };
+
+//actualizar carros
+const updatecar =(editecars)=>{
+  editecars.id = editecar.id;
+  const index = newcar.findIndex( cars => cars.id === editecar.id  )
+  newcar[index] = editecars
+
+setNewcar([...newcar]);
+}
+
 console.log(editecar);
 
   return (
     <div className="App">
-    <CarList editecar={editecar} updatecar={updatecar} deletecar={deletecar} agregarcarros={agregarcarros} newcar={newcar} />
+    <CarList updatecar={updatecar} editecar={editecar} selectedcar={selectedcar} deletecar={deletecar} agregarcarros={agregarcarros} newcar={newcar} />
     </div>
   )
 }

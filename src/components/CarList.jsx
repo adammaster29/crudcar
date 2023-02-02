@@ -3,24 +3,31 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 
-const CarList = ({ editecar,newcar, agregarcarros, deletecar, updatecar }) => {
+const CarList = ({ editecar, newcar, agregarcarros, deletecar, selectedcar,updatecar }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { register, handleSubmit,reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const submit = (data, e) => {
     e.preventDefault();
-    agregarcarros(data);
-    const clear ={brand:"",model:"",color:"",year:"",price:""}
-    reset(clear)
-    console.log(data);
-    
-  };
-  useEffect(()=>{
-    reset(editecar);
+    data.id = Date.now();
 
-  },[editecar])
+    if (editecar !== null) {
+      updatecar(data)
+    }
+    else
+    {
+      agregarcarros(data);
+    }
+    const clear = { brand: "", model: "", color: "", year: "", price: "" };
+    reset(clear);
+    console.log(data);
+  };
+
+  useEffect(() => {
+    reset(editecar);
+  }, [editecar]);
 
   return (
     <div>
@@ -31,7 +38,10 @@ const CarList = ({ editecar,newcar, agregarcarros, deletecar, updatecar }) => {
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title style={{marginLeft:"auto"}}> Carros  nuevos</Modal.Title>
+            <Modal.Title style={{ marginLeft: "auto" }}>
+              {" "}
+              Carros nuevos
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form className="formcar" onSubmit={handleSubmit(submit)} action="">
@@ -119,7 +129,7 @@ const CarList = ({ editecar,newcar, agregarcarros, deletecar, updatecar }) => {
             <Button variant="danger" onClick={() => deletecar(carros.id)}>
               Eliminar
             </Button>
-            <Button variant="success" onClick={() => updatecar(carros)}>
+            <Button variant="success" onClick={() => selectedcar(carros)}>
               Actualizar
             </Button>
           </div>
