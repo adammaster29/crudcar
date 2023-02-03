@@ -129,7 +129,7 @@ const CarList = ({ editecar, newcar, agregarcarros, deletecar, selectedcar,updat
             <Button variant="danger" onClick={() => deletecar(carros.id)}>
               Eliminar
             </Button>
-            <Button variant="success" onClick={() => selectedcar(carros)}>
+            <Button variant="success" onClick={() => {selectedcar(carros); handleShow() }}>
               Actualizar
             </Button>
           </div>
